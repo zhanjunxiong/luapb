@@ -1,10 +1,17 @@
 require("luapb");
 
-pb.import("test.proto");
-
---required int32 uid = 1;
+--package lm;
+--message test
+--{
+--	required int32 uid = 1;
 --	required int32 param = 2;
 --	optional string param1 = 3;
+--	repeated string param2 = 4;
+--};
+
+pb.import("test.proto");
+
+
 local msg = pb.new("lm.test");
 msg.uid = 12345;
 msg.param = 9876;
