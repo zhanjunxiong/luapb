@@ -388,7 +388,7 @@ static int pb_get(lua_State* L)
 		std::string str(reflection->GetString(*message, field));
 		lua_pushlstring(L, str.c_str(), str.length());
 	}
-	if(field->type() == google::protobuf::FieldDescriptor::TYPE_MESSAGE)
+	else if(field->type() == google::protobuf::FieldDescriptor::TYPE_MESSAGE)
 	{
     	google::protobuf::Message* msg = reflection->MutableMessage(message, field);
     	push_message(L, msg, false);
